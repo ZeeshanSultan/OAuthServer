@@ -11,3 +11,4 @@ $storage = new OAuth2\Storage\Pdo(array('dsn' => $dsn, 'username' => $username, 
 $config = array('access_lifetime' => $access_token_lifetime, 'refresh_token_lifetime' => $refresh_token_lifetime);
 $server = new OAuth2\Server($storage, $config);
 $server->addGrantType(new OAuth2\GrantType\AuthorizationCode($storage));
+$server->addGrantType(new OAuth2\GrantType\RefreshToken($storage, array('always_issue_new_refresh_token' => true)));
